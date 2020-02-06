@@ -1,0 +1,11 @@
+# version format
+version: 1.0.{build}
+
+environment:
+  APPVEYOR_RDP_PASSWORD: Ap%vey0r
+
+init:
+  - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+
+on_finish:
+  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
